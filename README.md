@@ -78,7 +78,7 @@ npm run dev:server
 npm run dev:frontend
 ```
 
-The application will be available at `http://localhost:5173` (frontend) and `http://localhost:5000` (backend API).
+The application will be available at `http://localhost:5173` (frontend) and `http://localhost:3001` (backend API).
 
 ### Building for Production
 
@@ -145,7 +145,7 @@ npm run preview
 Create a `.env` file in the root directory:
 
 ```env
-PORT=5000
+PORT=3001
 NODE_ENV=development
 ZILLOW_ENABLED=true
 REDFIN_ENABLED=true
@@ -193,7 +193,7 @@ See `BACKEND_SETUP.md` for detailed backend configuration options.
 ## 🐛 Troubleshooting
 
 ### Backend Connection Issues
-- Ensure backend is running on port 5000
+- Ensure backend is running on port 3001
 - Check network connectivity
 - Verify CORS settings
 

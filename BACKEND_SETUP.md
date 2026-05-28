@@ -60,7 +60,7 @@ Fetch property data by address
 
 **Request:**
 ```bash
-curl -X POST http://localhost:5000/api/property \
+curl -X POST http://localhost:3001/api/property \
   -H "Content-Type: application/json" \
   -d '{"address": "1234 Main St, New York, NY"}'
 ```
@@ -96,7 +96,7 @@ curl -X POST http://localhost:5000/api/property \
 Health check endpoint
 
 ```bash
-curl http://localhost:5000/api/health
+curl http://localhost:3001/api/health
 ```
 
 ## 📊 Data Accuracy Notes
@@ -129,7 +129,7 @@ curl http://localhost:5000/api/health
 Create a `.env` file in the root directory:
 
 ```
-PORT=5000
+PORT=3001
 NODE_ENV=development
 ZILLOW_ENABLED=true
 REDFIN_ENABLED=true
@@ -143,14 +143,14 @@ COUNTY_RECORDS_ENABLED=true
 npm run dev:server
 
 # Terminal 2: Test an address
-curl -X POST http://localhost:5000/api/property \
+curl -X POST http://localhost:3001/api/property \
   -H "Content-Type: application/json" \
   -d '{"address": "123 Main St, New York, NY 10001"}'
 ```
 
 ### Troubleshooting
 
-**CORS Errors**: Make sure the backend is running on `http://localhost:5000`
+**CORS Errors**: Make sure the backend is running on `http://localhost:3001`
 
 **Address Not Found**: 
 - Try with a complete address including city and state
@@ -200,5 +200,5 @@ src/
 For issues or questions about data accuracy, please check:
 1. The address format (include city and state)
 2. Internet connection status
-3. Backend server is running on port 5000
+3. Backend server is running on port 3001
 4. Check browser console for detailed error messages

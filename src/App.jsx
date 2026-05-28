@@ -309,7 +309,7 @@ export default function App() {
     setLoading(true);
     try {
       // Call backend API for real property data
-      const response = await fetch("http://localhost:5000/api/property", {
+      const response = await fetch("http://localhost:3001/api/property", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
