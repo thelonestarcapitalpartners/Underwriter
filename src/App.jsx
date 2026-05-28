@@ -194,36 +194,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);}
 
 // ============ Helper Functions ============
 
-// Mock data fetching - in production, integrate with real APIs
-const mockFetchPropertyData = async (address) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        address,
-        propertyType: "multifamily",
-        units: 4,
-        askingPrice: 450000,
-        estimatedMonthlyRent: 4200,
-        propertyTaxes: 380,
-        bedroomBath: "12 bed / 4 bath",
-        yearBuilt: 1985,
-        lotSize: 0.28,
-        squareFeet: 3850,
-        sources: {
-          zillow: true,
-          redfin: true,
-          taxRecords: true,
-          mls: false,
-        },
-        neighborhood: {
-          walkScore: 72,
-          crimeRate: "low",
-          schoolRating: 8,
-        },
-      });
-    }, 1500);
-  });
-};
+// Real data fetching via backend API (server/index.js)
+// The backend scrapes Zillow, Redfin, and county tax records
+// For development, run: npm run dev:server
+// The frontend calls http://localhost:5000/api/property
 
 // ============ Utility Functions ============
 
@@ -334,10 +308,24 @@ export default function App() {
     setError("");
     setLoading(true);
     try {
-      const data = await mockFetchPropertyData(address);
+      // Call backend API for real property data
+      const response = await fetch("http://localhost:5000/api/property", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ address: address.trim() }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Property not found. Please check the address and try again.");
+      }
+
+      const data = await response.json();
       setProperty(data);
     } catch (err) {
-      setError("Failed to fetch property data. Please try again.");
+      setError(err.message || "Failed to fetch property data. Please try again.");
+      console.error("Property fetch error:", err);
     } finally {
       setLoading(false);
     }
