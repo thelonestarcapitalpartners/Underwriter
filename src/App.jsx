@@ -10,14 +10,14 @@ const STYLES = `
   --card:#fff;--sh:0 2px 12px rgba(15,14,12,0.08);--sh-lg:0 8px 32px rgba(15,14,12,0.12);
 }
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);}
-.app{min-height:100vh;display:flex;flex-direction:column;}
+.app{min-height:100vh;width:100%;display:flex;flex-direction:column;}
 
 .hdr{background:var(--ink);color:var(--paper);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold);}
 .hdr-logo{font-family:'DM Serif Display',serif;font-size:21px;}
 .hdr-logo span{color:var(--gold);}
 
-.main{display:flex;flex:1;min-height:0;}
-.content{flex:1;padding:24px 28px;overflow-y:auto;min-width:0;}
+.main{display:flex;flex:1;min-height:0;width:100%;}
+.content{flex:1;padding:24px 28px;overflow-y:auto;min-width:0;width:100%;}
 
 .search-wrap{margin-bottom:24px;}
 .search-title{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:4px;}
@@ -160,6 +160,36 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);}
 .ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
 .nc{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:12px;}
 .nt{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+
+@media (max-width: 768px) {
+  .hdr{padding:12px 16px;}
+  .content{padding:16px 16px;}
+  .search-title{font-size:22px;}
+  .search-row{gap:6px;}
+  .ph{flex-direction:column;align-items:flex-start;}
+  .ph-price{text-align:left;white-space:normal;margin-top:10px;}
+  .ph-sub{text-align:left;}
+  .mgrid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px;}
+  .sgrid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;}
+  .strategy-btns{flex-direction:column;}
+  .strat-btn{width:100%;}
+  .ngrid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width: 480px) {
+  .hdr{padding:10px 12px;}
+  .hdr-logo{font-size:18px;}
+  .content{padding:12px 12px;}
+  .search-title{font-size:18px;}
+  .search-row{flex-direction:column;}
+  .addr-inp, .go-btn{width:100%;}
+  .ph-addr{font-size:16px;}
+  .ph-price{font-size:22px;}
+  .mgrid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;}
+  .sgrid{grid-template-columns:1fr;}
+  .ngrid{grid-template-columns:1fr;}
+  .strategy-btns{flex-direction:column;}
+}
 `;
 
 // ============ Helper Functions ============
